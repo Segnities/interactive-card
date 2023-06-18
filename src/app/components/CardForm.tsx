@@ -1,8 +1,10 @@
+'use client';
+
 import { Formik, Field, Form } from "formik";
 
 import * as Yup from "yup";
 
-import "../styles/CardForm.scss"
+import "../styles/CardForm.scss";
 
 export const cardValidationSchema = Yup.object().shape({
     cardHolderName: Yup.string()
@@ -42,54 +44,76 @@ export default function CardForm() {
                 }}
                 validationSchema={cardValidationSchema}
                 onSubmit={() => {
-                    console.info("submit")
+                    console.info("Submitted!")
                 }}
             >
                 {({ errors, values, resetForm }) => (
-                    <Form>
-                        <div>
-                            <label htmlFor="cardHolderName">
-                                CARDHOLDER NAME
-                            </label>
-                            <Field
-                                id="cardHolderName"
-                                type="text"
-                                name="cardHolderName"
-                                placeholder="e.g. Jane Appleseed"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="cardNumber"></label>
-                            <Field
-                                id="cardNumber"
-                                type="text"
-                                name="cardNumber"
-                                placeholder="e.g. 1234 5678 9123 0000"
-                            />
-                        </div>
-                        <div>
-                            <div>
-                                <label htmlFor="exp-date">EXP. DATE (MM/YY)</label>
-                                <div id="exp-date">
+                    <div className="card-form-container">
+                        <Form className="card-form">
+                            <div className="card-form-inner">
+                                <div className="card-block block-x-space">
+                                    <label htmlFor="cardHolderName">
+                                        CARDHOLDER NAME
+                                    </label>
                                     <Field
-                                        name="month"
-                                        placeholder="MM"
+                                        id="cardHolderName"
                                         type="text"
-                                    />
-                                    <Field
-                                        name="year"
-                                        placeholder="YY"
-                                        type="text"
+                                        className="under-label"
+                                        name="cardHolderName"
+                                        placeholder="e.g. Jane Appleseed"
                                     />
                                 </div>
+                                <div className="card-block block-x-space">
+                                    <label htmlFor="cardNumber">CARD NUMBER</label>
+                                    <Field
+                                        id="cardNumber"
+                                        type="text"
+                                        className="under-label"
+                                        name="cardNumber"
+                                        placeholder="e.g. 1234 5678 9123 0000"
+                                        maxLength={16}
+                                        required
+                                    />
+                                </div>
+                                <div className="card-block block-x-space">
+                                    <div className="subblock">
+                                        <div className="half-width exp-date-wrapper">
+                                            <label htmlFor="exp-date">EXP. DATE (MM/YY)</label>
+                                            <div id="exp-date" className="exp-date under-label">
+                                                <Field
+                                                    name="month"
+                                                    placeholder="MM"
+                                                    type="text"
+                                                    maxLength={2}
+                                                    required
+                                                />
+                                                <Field
+                                                    name="year"
+                                                    placeholder="YY"
+                                                    type="text"
+                                                    maxLength={2}
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="cvc half-width">
+                                            <label htmlFor="cvc">CVC</label>
+                                            <Field
+                                                id="cvc"
+                                                type="text"
+                                                name="cvc"
+                                                className="under-label"
+                                                placeholder="eg. 123"
+                                                maxLength={3}
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <button className="w-full btn btn-confirm" type="submit">Confirm</button>
                             </div>
-                            <div>
-                                <label htmlFor="cvc">CVC</label>
-                                <Field id="cvc" type="text" name="cvc" placeholder="CVC" />
-                            </div>
-                        </div>
-                        <button>Confirm</button>
-                    </Form>
+                        </Form>
+                    </div>
                 )}
             </Formik>
         </div>
