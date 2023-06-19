@@ -1,6 +1,15 @@
-@import './variables/colorsVariables.scss';
-
 .linear-gradient-block {
-    background-color: $veryDarkViolet;
-    height: 100%;
+    background-image: url('/bg-main-mobile.png');
+}
+
+
+@media screen and (min-width: 768px) {
+    .linear-gradient-block {
+        width: 100%;
+        min-height: 100vh;
+        background-image: url('/bg-main-desktop.png');
+        background-repeat: none;
+        background-size: cover;
+        object-fit: contain;
+    }
 }

@@ -47,7 +47,7 @@ export default function CardForm() {
                     console.info("Submitted!")
                 }}
             >
-                {({ errors, values, resetForm }) => (
+                {({ errors, values }) => (
                     <div className="card-form-container">
                         <Form className="card-form">
                             <div className="card-form-inner">
