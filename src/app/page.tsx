@@ -1,12 +1,12 @@
 import CardForm from "./components/CardForm";
 import LinearGradientBlock from "./components/UI/LinearGradientBlock";
 
-import './styles/InteractiveCard.scss';
+import styles from './styles/InteractiveCard.module.scss';
 
 export default function InterectiveCard() {
   return (
     <main>
-      <div className="grid-container">
+      <div className={styles["grid-container"]}>
         <LinearGradientBlock />
         <CardForm />
       </div>

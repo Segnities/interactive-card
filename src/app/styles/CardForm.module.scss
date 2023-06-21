@@ -21,14 +21,29 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    &>label {
+        width: 100%;
+    }
+
+    & input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 6px;
+        outline: none;
+        border: 1px solid $lightGrayishViolet;
+        font-weight: 600;
+        color: $veryDarkViolet;
+
+        &::placeholder {
+        font-weight: normal;
+        }
+    }
 }
 
 .block-x-space {
     margin: 15px 0;
-}
-
-.card-block>label {
-    width: 100%;
 }
 
 .subblock {
@@ -43,57 +58,50 @@
     display: flex;
     flex-direction: row;
     width: 75%;
-}
 
-.exp-date input:not(:first-child) {
-    margin: 0 5px;
-}
+    & input:not(:first-child) {
+        margin: 0 5px;
+    }
 
-.exp-date input:first-child {
-    margin-right: 5px;
+    & input:first-child {
+        margin-right: 5px;
+    }
+
 }
 
 .exp-date-wrapper {
     display: flex;
     flex-direction: column;
+
+    input {
+        width: 50%;
+        border-radius: 6px;
+        padding: 12px;
+    }
 }
 
 .under-label {
     margin: 10px 0;
 }
 
-.exp-date-wrapper input {
-    width: 50%;
-    border-radius: 6px;
-    padding: 12px;
-}
-
-
-.card-block input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 6px;
-    outline: none;
-    border: 1px solid black;
-    font-weight: 600;
-    color: $veryDarkViolet;
-}
-
-.card-block input[type="text"]::placeholder {
-    font-weight: normal;
-}
-
 .w-full {
     width: 100%;
 }
 
+.card-input:focus {
+    border-style: solid;
+    border-color: $lightBlue !important;
+}
+
 .btn {
-    padding: 12px;
+    padding: 18px;
     border-radius: 8px;
     outline: none;
+    border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 16px;
 }
 
 .btn-confirm {
@@ -112,8 +120,9 @@
     }
 
     .card-block label {
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
+        letter-spacing: 2px;
     }
 
 
