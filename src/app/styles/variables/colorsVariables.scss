@@ -7,5 +7,6 @@ $dangerousRed: hsl(0, 100%, 66%);
 
 $lightBlue: hsl(249, 99%, 64%);
 $normalViolet: hsl(278, 94%, 30%);
+$lightViolet: hsl(269, 71%, 52%);
 
-$activeBorder: linear-gradient(135deg, $lightBlue, $normalViolet );
+$activeBorder: linear-gradient($lightBlue, $veryDarkViolet);
