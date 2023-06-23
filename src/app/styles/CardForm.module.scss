@@ -32,7 +32,10 @@
         font-size: 16px;
         border-radius: 6px;
         outline: none;
-        border: 1px solid $lightGrayishViolet;
+        border-color: $lightGrayishViolet;
+        border-style: solid;
+        border-width: 1px;
+        border-bottom-width: 2px;
         font-weight: 600;
         color: $veryDarkViolet;
 
@@ -53,8 +56,10 @@
 
 .exp-date {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-between;
     width: 75%;
+    height: 100%;
 
     & input:not(:first-child) {
         margin: 0 5px;
@@ -69,6 +74,8 @@
 .exp-date-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 
     input {
         width: 50%;
@@ -100,7 +107,35 @@
     font-size: 16px;
 }
 
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0 0 0;
+}
 
+.error-message {
+    width: auto;
+    font-size: 12px;
+    text-align: start;
+    color: $dangerousRed
+}
+
+.error-border {
+    border: 1px solid $dangerousRed !important;
+    border-right: 2px solid $dangerousRed !important;
+}
+
+.cvc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    &>label {
+        width: 100%;
+        text-align: start;
+    }
+}
 
 @media screen and (min-width: 1024px) {
     .card-block {
@@ -130,17 +165,7 @@
         justify-items: center;
     }
 
-    .cvc {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-items: center;
 
-        &>label {
-            width: 100%;
-            text-align: start;
-        }
-    }
 
     .subblock {
         display: flex;
