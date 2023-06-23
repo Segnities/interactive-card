@@ -5,6 +5,7 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 
 import styles from "../styles/CardForm.module.scss";
+import globalStyles from "../styles/global.module.scss";
 
 export const cardValidationSchema = Yup.object().shape({
     cardHolderName: Yup.string()
@@ -79,7 +80,7 @@ export default function CardForm() {
                                 <div className={`${styles["card-block"]} ${styles["block-x-space"]}`}>
                                     <div className={styles["subblock"]}>
                                         <div 
-                                            className={`${styles["half-width"]} ${styles["exp-date-wrapper"]}`}>
+                                            className={`${globalStyles["w-half"]} ${styles["exp-date-wrapper"]}`}>
                                             <label htmlFor="exp-date">EXP. DATE (MM/YY)</label>
                                             <div
                                                 id="exp-date"
@@ -103,7 +104,7 @@ export default function CardForm() {
                                                 />
                                             </div>
                                         </div>
-                                        <div className={`${styles["cvc"]} ${styles["half-width"]}`}>
+                                        <div className={`${styles["cvc"]} ${globalStyles["w-half"]}`}>
                                             <label htmlFor="cvc">CVC</label>
                                             <Field
                                                 id="cvc"
@@ -118,7 +119,7 @@ export default function CardForm() {
                                     </div>
                                 </div>
                                 <button
-                                    className={`${styles["w-full"]} ${styles["btn"]} ${styles["btn-confirm"]}`}
+                                    className={`${styles["w-full"]} ${styles["btn"]} ${globalStyles["btn-confirm"]}`}
                                     type="submit"
                                 >
                                     Confirm

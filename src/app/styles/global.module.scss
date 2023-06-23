@@ -1,0 +1,14 @@
+@import "variables/colorsVariables.scss";
+
+.w-half {
+    width: 50%;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.btn-confirm {
+    background-color: $veryDarkViolet;
+    color: $white;
+}

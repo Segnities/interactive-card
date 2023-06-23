@@ -37,7 +37,7 @@
         color: $veryDarkViolet;
 
         &::placeholder {
-        font-weight: normal;
+            font-weight: normal;
         }
     }
 }
@@ -50,9 +50,6 @@
     display: flex;
 }
 
-.half-width {
-    width: 50%;
-}
 
 .exp-date {
     display: flex;
@@ -84,13 +81,12 @@
     margin: 10px 0;
 }
 
-.w-full {
-    width: 100%;
-}
 
-.card-input:focus {
-    border-style: solid;
-    border-color: $lightBlue !important;
+.card-input {
+    &:focus {
+        border-style: solid;
+        border-color: $lightBlue !important;
+    }
 }
 
 .btn {
@@ -104,10 +100,7 @@
     font-size: 16px;
 }
 
-.btn-confirm {
-    background-color: $veryDarkViolet;
-    color: $white;
-}
+
 
 @media screen and (min-width: 1024px) {
     .card-block {
@@ -142,11 +135,11 @@
         flex-direction: column;
         align-items: center;
         justify-items: center;
-    }
 
-    .cvc>label {
-        width: 100%;
-        text-align: start;
+        &>label {
+            width: 100%;
+            text-align: start;
+        }
     }
 
     .subblock {
