@@ -1,7 +1,9 @@
 'use client';
 
-import { Field, Form, Formik } from "formik";
+import { useState } from "react";
+
 import type { FormikErrors, FormikTouched } from "formik";
+import { Field, Form, Formik } from "formik";
 
 import * as Yup from "yup";
 
@@ -23,7 +25,6 @@ type CardFormErrors = FormikErrors<{
     year: string;
     cvc: string;
 }>;
-
 
 export const cardValidationSchema = Yup.object().shape({
     cardHolderName: Yup.string()
@@ -52,6 +53,7 @@ export const cardValidationSchema = Yup.object().shape({
 });
 
 export default function CardForm() {
+    const [cardNumber, setCardNumber] = useState<string>("");
     const getExpDateErrorMessage = (
         errors: CardFormErrors,
         touched: CardFormTouched,
@@ -62,12 +64,13 @@ export default function CardForm() {
         return errors.month && touched.month ? errors.month : "";
     }
 
+
     return (
         <div className={styles["flex-center"]}>
             <Formik
                 initialValues={{
                     cardHolderName: "",
-                    cardNumber: "",
+                    cardNumber: cardNumber,
                     month: "",
                     year: "",
                     cvc: ""
@@ -77,7 +80,7 @@ export default function CardForm() {
                     console.info("Submitted!")
                 }}
             >
-                {({ errors, values, touched, setTouched }) => (
+                {({ errors, touched }) => (
                     <div className={styles["card-form-container"]}>
                         <Form className={styles["card-form"]} method="post">
                             <div className={styles["card-form-inner"]}>
