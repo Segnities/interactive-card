@@ -1,5 +1,6 @@
 'use client';
 
+import type { ChangeEvent } from "react";
 import { useState } from "react";
 
 import type { FormikErrors, FormikTouched } from "formik";
@@ -9,6 +10,7 @@ import * as Yup from "yup";
 
 import styles from "../styles/CardForm.module.scss";
 import globalStyles from "../styles/global.module.scss";
+import { C } from "vitest/dist/types-2b1c412e";
 
 type CardFormTouched = FormikTouched<{
     cardHolderName: string;
@@ -32,6 +34,7 @@ export const cardValidationSchema = Yup.object().shape({
         .matches(/^[a-zA-Z ]+$/, "Wrong format, letters only"),
     cardNumber: Yup.string()
         .matches(/^[0-9]+$/, "Wrong format, numbers only")
+        .transform((value) => value.replace(/\s/g, ""))
         .min(16, "Card number must be at least 16 digits")
         .max(16, "Card number must be at most 16 digits")
         .required("Card number is required"),
@@ -53,7 +56,9 @@ export const cardValidationSchema = Yup.object().shape({
 });
 
 export default function CardForm() {
+    const [cardInputNumber, setCardInputNumber] = useState<string>("");
     const [cardNumber, setCardNumber] = useState<string>("");
+
     const getExpDateErrorMessage = (
         errors: CardFormErrors,
         touched: CardFormTouched,
@@ -64,6 +69,12 @@ export default function CardForm() {
         return errors.month && touched.month ? errors.month : "";
     }
 
+    const handleCardNumber = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.replace(/\s/g, '');
+        const spacedValue = value.match(/.{1,4}/g)?.join(' ') || '';
+
+        setCardInputNumber(spacedValue);
+    }
 
     return (
         <div className={styles["flex-center"]}>
@@ -79,6 +90,7 @@ export default function CardForm() {
                 onSubmit={() => {
                     console.info("Submitted!")
                 }}
+                enableReinitialize={true}
             >
                 {({ errors, touched }) => (
                     <div className={styles["card-form-container"]}>
@@ -114,7 +126,12 @@ export default function CardForm() {
                                         className={`${styles["under-label"]} ${styles["card-input"]} ${errors.cardNumber && touched.cardNumber ? styles["error-border"] : ""}`}
                                         name="cardNumber"
                                         placeholder="e.g. 1234 5678 9123 0000"
-                                        maxLength={16}
+                                        maxLength={19}
+                                        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                            handleCardNumber(e);
+                                            setCardNumber(e.target.value);
+                                        }}
+                                        value={cardInputNumber}
                                         aria-errormessage={errors.cardNumber && touched.cardNumber ? errors.cardNumber : ""}
                                         aria-invalid={errors.cardNumber && touched.cardNumber ? "true" : "false"}
                                         aria-required="true"
