@@ -4,18 +4,18 @@ import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 
 import type { ChangeEvent, Dispatch, SetStateAction } from "react";
-import type { CardFormErrors, CardFormTouched } from "./CardForm";
+import type { CardFormErrors, CardFormTouched } from "./Form";
 
-import { cardValidationSchema } from "./CardForm";
+import { cardValidationSchema } from "./Form";
 
-import styles from "../styles/CardForm.module.scss";
+import styles from "../styles/Form.module.scss";
 import globalStyles from "../styles/global.module.scss";
 
-interface IdleCardFormProps {
+interface IdleFormProps {
     setFormStatus: Dispatch<SetStateAction<"error" | "success" | "idle">>
 }
 
-export default function IdleCardForm(props: IdleCardFormProps) {
+export default function IdleForm(props: IdleFormProps) {
     const {
         setFormStatus
     } = props;
@@ -65,7 +65,7 @@ export default function IdleCardForm(props: IdleCardFormProps) {
                     <Form className={styles["card-form"]}>
                         <div className={styles["card-form-inner"]}>
                             <div className={`${styles["card-block"]} ${styles["block-x-space"]}`}>
-                                <label htmlFor="cardHolderName">
+                                <label htmlFor="cardHolderName" className={styles["card-label"]}>
                                     CARDHOLDER NAME
                                 </label>
                                 <Field
@@ -89,7 +89,7 @@ export default function IdleCardForm(props: IdleCardFormProps) {
                                 </p>
                             </div>
                             <div className={`${styles["card-block"]} ${styles["block-x-space"]}`}>
-                                <label htmlFor="cardNumber">CARD NUMBER</label>
+                                <label htmlFor="cardNumber" className={styles["card-label"]}>CARD NUMBER</label>
                                 <Field
                                     id="cardNumber"
                                     type="text"
@@ -118,7 +118,7 @@ export default function IdleCardForm(props: IdleCardFormProps) {
                                 <div className={`${styles["subblock"]} ${globalStyles["h-100"]}`}>
                                     <div
                                         className={`${globalStyles["w-half"]} ${styles["exp-date-wrapper"]}`}>
-                                        <label htmlFor="exp-date">EXP. DATE (MM/YY)</label>
+                                        <label htmlFor="exp-date" className={styles["card-label"]}>EXP. DATE (MM/YY)</label>
                                         <div
                                             id="exp-date"
                                             className={`${styles["exp-date"]}`}
@@ -162,7 +162,7 @@ export default function IdleCardForm(props: IdleCardFormProps) {
                                         </div>
                                     </div>
                                     <div className={`${styles["cvc"]} ${globalStyles["w-half"]}`}>
-                                        <label htmlFor="cvc">CVC</label>
+                                        <label htmlFor="cvc" className={styles["card-label"]}>CVC</label>
                                         <Field
                                             id="cvc"
                                             type="text"

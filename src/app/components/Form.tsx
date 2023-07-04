@@ -6,9 +6,9 @@ import type { FormikErrors, FormikTouched } from "formik";
 
 import * as Yup from "yup";
 
-import styles from "../styles/CardForm.module.scss";
-import IdleCardForm from "./IdleCardForm";
-import SuccessCardForm from "./SuccessCardForm";
+import styles from "../styles/Form.module.scss";
+import IdleForm from "./IdleCardForm";
+import SuccessForm from "./SuccessForm";
 
 export type CardFormTouched = FormikTouched<{
     cardHolderName: string;
@@ -53,19 +53,19 @@ export const cardValidationSchema = Yup.object().shape({
         .matches(/^[0-9]+$/, "Wrong format, numbers only"),
 });
 
-export default function CardForm() {
+export default function Form() {
 
     const [formStatus, setFormStatus] = useState<"error" | "success" | "idle">("idle");
 
-    const getFormStatusUI = ():JSX.Element => {
+    const getFormStatusUI = (): JSX.Element => {
         if (formStatus === "idle") {
-            return <IdleCardForm setFormStatus={setFormStatus} />;
+            return <IdleForm setFormStatus={setFormStatus} />;
         } else if (formStatus === "success") {
-            return <SuccessCardForm />;
+            return <SuccessForm />;
         } else {
             return <div>Something went wrong...</div>
-        } 
-    } 
+        }
+    }
 
     return (
         <div className={styles["flex-center"]}>

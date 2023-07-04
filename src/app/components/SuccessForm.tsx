@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 
-import styles from "../styles/CardForm.module.scss";
+import styles from "../styles/Form.module.scss";
 import globalStyles from "../styles/global.module.scss";
 
-export default function SuccessCardForm() {
+export default function SuccessForm() {
     return (
         <div className={styles["card-form-success"]}>
             <Image src="/icon-complete.svg" alt="Complete" width={80} height={80} />
@@ -14,5 +14,4 @@ export default function SuccessCardForm() {
             <button className={`${styles["btn"]} ${globalStyles["btn-confirm"]} ${styles["card-form-success__btn"]}`}>Continue</button>
         </div>
     );
-
 }
